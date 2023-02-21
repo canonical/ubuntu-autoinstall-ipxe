@@ -1,0 +1,61 @@
+#!ipxe
+:MENU
+menu
+item --gap -- ----------------Compudopt iPXE boot menu ----------------
+item jammy     Ubuntu 22.04 Installation
+item kinetic     Ubuntu 22.10 Installation
+item lunar     Ubuntu 23.04 Installation
+item shell      ipxe shell
+choose --default return --timeout 20000 target && goto ${target}
+
+:jammy
+
+set base-url http://boot.linuxgroove.com/ubuntu/22.04/iso
+kernel ${base-url}/casper/vmlinuz
+initrd ${base-url}/casper/initrd
+imgargs vmlinuz initrd=initrd \
+ ip=dhcp \
+ url=${base-url}/../install.iso \
+ cloud-config-url=/dev/null \
+ autoinstall \
+ ds=nocloud-net;s=http://boot.linuxgroove.com/ubuntu/22.04/ \
+echo Booting Ubuntu 22.04 installer...
+boot
+goto MENU
+
+:kinetic
+
+set base-url http://boot.linuxgroove.com/ubuntu/22.10/iso
+kernel ${base-url}/casper/vmlinuz
+initrd ${base-url}/casper/initrd
+imgargs vmlinuz initrd=initrd \
+ ip=dhcp \
+ url=${base-url}/../install.iso \
+ cloud-config-url=/dev/null \
+ autoinstall \
+ ds=nocloud-net;s=http://boot.linuxgroove.com/ubuntu/22.10/ \
+echo Booting Ubuntu 22.10 installer...
+boot
+goto MENU
+
+:lunar
+
+set base-url http://boot.linuxgroove.com/ubuntu/23.04/iso
+kernel ${base-url}/casper/vmlinuz
+initrd ${base-url}/casper/initrd
+imgargs vmlinuz initrd=initrd \
+ ip=dhcp \
+ url=${base-url}/../lunar-desktop-amd64.iso \
+ cloud-config-url=/dev/null \
+ experimental-autoinstall \
+ autoinstall \
+ ds=nocloud-net;s=http://boot.linuxgroove.com/ubuntu/23.04/ \
+echo Booting Ubuntu 23.04 installer...
+boot
+goto MENU
+
+:shell
+shell ||
+goto MENU
+
+autoboot

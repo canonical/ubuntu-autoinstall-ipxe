@@ -1,0 +1,46 @@
+#cloud-config
+autoinstall:
+  identity:
+    hostname: jammy-desktop
+    password: $6$5lpwCLsKLEzMkSJc$keOAhA6aO/5RocGThmhVA7LSNuW911Rx5HHXFEa75oGK20cEdAAgn14H5f5nGeq6QgcSyLPrWcg1.JvjXbhrN/
+    realname: Ubuntu user
+    username: ubuntu
+  keyboard:
+    layout: en
+    toggle: null
+    variant: ''
+  locale: en_US.UTF-8
+  packages:
+  - ubuntu-desktop^
+  - plymouth-theme-ubuntu-logo
+  - grub-gfxpayload-lists
+  - systemd-hwe-hwdb
+  - python3-magic
+  kernel:
+    package: linux-generic-hwe-22.04
+  snaps:
+  - name: gnome-42-2204
+    channel: stable/ubuntu-22.04
+  - name: gnome-3-38-2004
+    channel: stable/ubuntu-22.04
+  - name: firefox
+    channel: stable/ubuntu-22.04
+  - name: snapd-desktop-integration
+    channel: stable/ubuntu-22.04
+  - name: snap-store
+    channel: stable/ubuntu-22.04
+  ssh:
+    allow-pw: true
+    authorized-keys: []
+    install-server: false
+  storage:
+    layout:
+      name: direct
+  late-commands:
+  - curtin in-target --target=/target -- sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT=""/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/' /etc/default/grub
+  - 'rm -f /target/etc/netplan/*.yaml'
+  - 'echo "# Let NetworkManager manage all devices on this system" > /target/etc/netplan/01-network-manager-all.yaml'
+  - 'echo "network:" >> /target/etc/netplan/01-network-manager-all.yaml'
+  - 'echo "  version: 2" >> /target/etc/netplan/01-network-manager-all.yaml'
+  - 'echo "  renderer: NetworkManager" >> /target/etc/netplan/01-network-manager-all.yaml'
+  version: 1

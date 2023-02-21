@@ -1,0 +1,27 @@
+#cloud-config
+autoinstall:
+  identity:
+    hostname: kinetic-desktop
+    password: $6$5lpwCLsKLEzMkSJc$keOAhA6aO/5RocGThmhVA7LSNuW911Rx5HHXFEa75oGK20cEdAAgn14H5f5nGeq6QgcSyLPrWcg1.JvjXbhrN/
+    realname: Ubuntu user
+    username: ubuntu
+  keyboard:
+    layout: en
+    toggle: null
+    variant: ''
+  locale: en_US.UTF-8
+  packages:
+  - ubuntu-desktop^
+  - plymouth-theme-ubuntu-logo
+  - grub-gfxpayload-lists
+  storage:
+    layout:
+      name: direct
+  late-commands:
+  - curtin in-target --target=/target -- sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT=""/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/' /etc/default/grub
+  - 'rm -f /target/etc/netplan/*.yaml'
+  - 'echo "# Let NetworkManager manage all devices on this system" > /target/etc/netplan/01-network-manager-all.yaml'
+  - 'echo "network:" >> /target/etc/netplan/01-network-manager-all.yaml'
+  - 'echo "  version: 2" >> /target/etc/netplan/01-network-manager-all.yaml'
+  - 'echo "  renderer: NetworkManager" >> /target/etc/netplan/01-network-manager-all.yaml'
+  version: 1
