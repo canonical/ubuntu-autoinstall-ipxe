@@ -1,0 +1,14 @@
+diff --git a/mirror-dstdomain.acl.d/10-default b/mirror-dstdomain.acl.d/10-default
+index ab3f67c..11c373f 100644
+--- a/mirror-dstdomain.acl.d/10-default
++++ b/mirror-dstdomain.acl.d/10-default
+@@ -3,7 +3,8 @@
+ # network destinations that are allowed by this cache
+ 
+ # launchpad personal package archives (disabled by default)
+-#ppa.launchpad.net
++ppa.launchpad.net
++ppa.launchpadcontent.net
+ #private-ppa.launchpad.net
+ 
+ # add additional mirror domains here (disabled by default)

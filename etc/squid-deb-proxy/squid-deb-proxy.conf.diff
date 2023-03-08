@@ -1,0 +1,13 @@
+diff --git a/squid-deb-proxy.conf b/squid-deb-proxy.conf
+index b4ae076..6488c83 100644
+--- a/squid-deb-proxy.conf
++++ b/squid-deb-proxy.conf
+@@ -79,7 +79,7 @@ http_access deny blockedpkgs
+ 
+ # allow access only to official archive mirrors
+ # uncomment the third and fouth line to permit any unlisted domain
+-http_access deny !to_archive_mirrors
++#http_access deny !to_archive_mirrors
+ #http_access allow !to_archive_mirrors
+ 
+ # don't cache domains not listed in the mirrors file
