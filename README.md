@@ -9,7 +9,7 @@ To setup:
 sudo apt install apache2 squid-deb-proxy
 ```
 
-Clone this repository to /var/www/html/ubuntu-autoinstall-ipxe and run the bootstrap.sh script from that directory
+Clone this repository to /var/www/html/ubuntu-autoinstall-ipxe and run the bootstrap.sh script from that directory.  This script will apply some patches to the squid-deb-proxy and apache2 config files to setup the deployment server.
 
 ```
 sudo ./bootstrap.sh
