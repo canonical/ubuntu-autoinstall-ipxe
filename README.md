@@ -15,6 +15,16 @@ Clone this repository to /var/www/html/ubuntu-autoinstall-ipxe and run the boots
 sudo ./bootstrap.sh
 ```
 
+To install a system, boot via iPXE (for example the iso available from https://ipxe.org/download)
+
+At the iPXE prompt:
+```
+IPXE> dhcp
+IPXE> chain http://boot.linuxgroove.com/ipxe
+```
+
+This will then display the iPXE menu with each item defined your your ipxe file (at the root of this repo)
+
 NOTES:
 
 To create the password used in the identity section:
