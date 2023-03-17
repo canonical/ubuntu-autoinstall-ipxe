@@ -1,0 +1,1 @@
+echo  "#cloud-config" > rendered_userdata; UD=`sudo cloud-init query userdata`; `cloud-init query --format "$UD" >> rendered_userdata; cloud-init schema --config-file rendered_userdata`
