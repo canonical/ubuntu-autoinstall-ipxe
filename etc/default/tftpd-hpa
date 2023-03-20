@@ -1,7 +1,12 @@
-# /etc/default/tftpd-hpa
-
-TFTP_USERNAME="tftp"
-TFTP_DIRECTORY="/pxe-boot"
-TFTP_ADDRESS=":69"
-TFTP_OPTIONS="-c --secure --listen -v --map-file /etc/tftpd.remap"
-OPTIONS="-l -s -r"
+diff --git a/./a/tftpd-hpa b/./b/tftpd-hpa
+index e69de29..ee9cf12 100644
+--- a/./a/tftpd-hpa
++++ b/./b/tftpd-hpa
+@@ -0,0 +1,7 @@
++# /etc/default/tftpd-hpa
++
++TFTP_USERNAME="tftp"
++TFTP_DIRECTORY="/pxe-boot"
++TFTP_ADDRESS=":69"
++TFTP_OPTIONS="-c --secure --listen -v --map-file /etc/tftpd.remap"
++OPTIONS="-l -s -r"
