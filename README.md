@@ -3,13 +3,14 @@ iPXE based provisioning of Ubuntu 22.04 and later
 Requirements:
  * apache2 (to serve installation related files)
  * squid-deb-proxy (caching proxy to cache debs on local server)
+ * tftpd-hpa (serve the .efi files)
 
 To setup:
 ```
-sudo apt install apache2 squid-deb-proxy
+sudo apt install apache2 squid-deb-proxy tftpd-hpa
 ```
 
-Clone this repository to /var/www/html/ubuntu-autoinstall-ipxe and run the bootstrap.sh script from that directory.  This script will apply some patches to the squid-deb-proxy and apache2 config files to setup the deployment server.
+Clone this repository to /pxe-boot and run the bootstrap.sh script from that directory.  This script will apply some patches to the squid-deb-proxy and apache2 config files to setup the deployment server.
 
 ```
 sudo ./bootstrap.sh
