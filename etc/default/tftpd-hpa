@@ -1,7 +1,7 @@
 diff --git a/tftpd-hpa b/tftpd-hpa
 index e69de29..ee9cf12 100644
---- a/./a/tftpd-hpa
-+++ b/./b/tftpd-hpa
+--- a/tftpd-hpa
++++ b/tftpd-hpa
 @@ -0,0 +1,7 @@
 +# /etc/default/tftpd-hpa
 +
