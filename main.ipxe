@@ -1,0 +1,99 @@
+#!ipxe
+:MENU
+menu
+item --gap -- ----------------Operating System Installation ------------------
+#item keydeploy	Key Deploy
+item ubuntu	Ubuntu 22.04 LTS Installation
+item --gap -- ----------------Disk Wiping Software ---------------------------
+item pmagic	Parted Magic - Requires 8GB RAM
+item diskwipe	KillDisk
+item blancco	Blancco
+item --gap -- ----------------Utilities --------------------------------------
+item memtest	Memtest86+
+item --gap -- ----------------iPXE Shell -------------------------------------
+item shell	iPXE Shell
+choose --default return target && goto ${target}
+cpair --foreground 5 --background 7 0
+
+:keydeploy
+
+kernel http://192.168.1.107/keydeploy/wimboot gui
+initrd http://192.168.1.107/keydeploy/BCD BCD
+initrd http://192.168.1.107/keydeploy/boot.sdi boot.sdi
+initrd http://192.168.1.107/sources/boot.wim
+# This is for MDT
+#initrd http://192.168.1.107/MDT/boot.wim
+
+
+boot
+goto MENU
+
+:ubuntu
+
+set base-url http://192.168.1.107/ubuntu/22.04
+kernel ${base-url}/casper/vmlinuz
+initrd ${base-url}/casper/initrd
+imgargs vmlinuz initrd=initrd \
+ ip=dhcp \
+ url=${base-url}//${baseurl}install.iso \
+ cloud-config-url=/dev/null\
+ autoinstall \
+ ds=nocloud-net;s=http://192.168.1.107/ubuntu/22.04/jammy/ \
+echo Booting Ubuntu 22.04 installer...
+boot
+goto MENU
+
+
+
+:pmagic
+
+#sanboot http://192.168.1.107/pmagic/pmagic-new.iso
+#boot
+kernel http://192.168.1.107/pmagic/bzImage ip=dhcp edd=on vga=normal netsrc=wget neturl="http://192.168.1.107/pmagic/pmodules" initrd=initrd.img initrd=fu.img initrd=m.img
+
+#kernel http://192.168.1.107/pmagic/bzImage initrd=initrd.img initrd=fu.img initrd=m.img edd=on vga=normal netsrc=wget neturl="http://192.168.1.107/pmagic/pmodules/"
+initrd http://192.168.1.107/pmagic/initrd.img
+initrd http://192.168.1.107/pmagic/fu.img
+initrd http://192.168.1.107/pmagic/m.img
+#initrd http://192.168.1.107/pmagic/files.cgz
+boot
+#kernel http://192.168.1.107/pmagic/bzImage initrd=initrd.img initrd=fu.img initrd=m.img edd=on vga=normal netsrc=wget neturl="http://192.168.1.107:/pmagic/pmodules/"
+
+goto MENU
+
+
+:diskwipe
+
+kernel http://192.168.1.107/keydeploy/wimboot
+initrd http://192.168.1.107/killdisk/BCD
+initrd http://192.168.1.107/killdisk/boot.sdi
+initrd http://192.168.1.107/killdisk/boot.wim
+boot
+goto MENU
+
+:blancco
+
+kernel http://192.168.1.107/blancco/arch/boot/x86_64/vmlinuz-bde-linux
+initrd http://192.168.1.107/blancco/arch/boot/x86_64/initramfs-bde-linux.img
+initrd http://192.168.1.107/blancco/arch/boot/amd-ucode.img
+initrd http://192.168.1.107/blancco/arch/boot/config.img
+initrd http://192.168.1.107/blancco/arch/boot/intel-ucode.img
+imgargs vmlinuz-bde-linux ip=dhcp archiso_http_srv=http://192.168.1.107:80/blancco/ archisolabel=BLANCCO archisobasedir=arch copytoram=y cow_spacesize=50% memtest=00 vmalloc=400M initrd=initramfs-bde-linux.img initrd=amd-ucode.img initrd=config.img initrd=intel-ucode.img
+
+
+boot
+
+
+:memtest
+
+kernel http://192.168.1.107/memtest/memtest64.efi 
+boot
+
+goto MENU
+
+:shell
+shell ||
+goto MENU
+
+autoboot
+
