@@ -6,6 +6,10 @@ patch -p1 < $checkout/etc/squid-deb-proxy/mirror-dstdomain.acl.d/10-default.diff
 patch -p1 < $checkout/etc/squid-deb-proxy/squid-deb-proxy.conf.diff
 cd /etc/apache2/sites-available/
 patch -p1 < $checkout/etc/apache2/sites-available/000-default.conf.diff
+cd /etc/default/
+patch -p1 < $checkout/etc/default/tftpd-hpa.diff
+cd /etc/
+patch -p1 < $checkout/etc/tftpd.remap.diff
 
 cp /etc/fstab /etc/fstab.orig
 
