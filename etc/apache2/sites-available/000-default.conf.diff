@@ -7,7 +7,7 @@ index cfe8df5..d606049 100644
  
  	ServerAdmin webmaster@localhost
 -	DocumentRoot /var/www/html
-+	DocumentRoot /var/www/html/ubuntu-autoinstall-ipxe
++	DocumentRoot /pxe-boot
  
  	# Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
  	# error, crit, alert, emerg.
