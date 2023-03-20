@@ -1,0 +1,7 @@
+# /etc/default/tftpd-hpa
+
+TFTP_USERNAME="tftp"
+TFTP_DIRECTORY="/pxe-boot"
+TFTP_ADDRESS=":69"
+TFTP_OPTIONS="-c --secure --listen -v --map-file /etc/tftpd.remap"
+OPTIONS="-l -s -r"

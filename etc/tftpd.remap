@@ -1,0 +1,4 @@
+#Remap path seperators
+rg \\ /
+#Map /Boot to /Windows
+#Map /boot to /Windows
