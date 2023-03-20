@@ -1,4 +1,4 @@
-diff --git a/./a/tftpd-hpa b/./b/tftpd-hpa
+diff --git a/tftpd-hpa b/tftpd-hpa
 index e69de29..ee9cf12 100644
 --- a/./a/tftpd-hpa
 +++ b/./b/tftpd-hpa
