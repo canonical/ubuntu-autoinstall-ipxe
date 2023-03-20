@@ -1,4 +1,9 @@
-#Remap path seperators
-rg \\ /
-#Map /Boot to /Windows
-#Map /boot to /Windows
+diff --git a/tftpd.remap b/tftpd.remap
+index e69de29..9b1abb0 100644
+--- a/tftpd.remap
++++ b/tftpd.remap
+@@ -0,0 +1,4 @@
++#Remap path seperators
++rg \\ /
++#Map /Boot to /Windows
++#Map /boot to /Windows
