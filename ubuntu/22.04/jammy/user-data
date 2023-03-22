@@ -19,6 +19,8 @@ autoinstall:
     sources:
       compudopt-ppa:
         source: ppa:compudopt/compudopt
+      landscape-ppa:
+        source: ppa:landscape/self-hosted-beta
   packages:
   - compudopt-overrides
   - ubuntu-desktop^
@@ -29,6 +31,7 @@ autoinstall:
   - gimp
   - ubuntu-restricted-addons
   - ubuntu-restricted-extras
+  - landscape-client
   kernel:
     package: linux-generic-hwe-22.04
   storage:
