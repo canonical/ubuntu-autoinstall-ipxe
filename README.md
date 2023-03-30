@@ -50,7 +50,7 @@ There are a couple of key things to know about the structure of the files and di
 
 **ubuntu/23.04/iso** - this is where the installation iso will be mounted, providing necessary files to network boot the devices.
 
-**ubuntu/23.04/ubuntu-23.04-desktop-amd64.iso** - Ubuntu Desktop 23.04 installation iso
+**ubuntu/23.04/ubuntu-23.04-desktop-amd64.iso** - [Ubuntu Desktop 23.04 installation iso](http://cdimage.ubuntu.com/daily-live/pending/lunar-desktop-amd64.iso)
 
 **ubuntu/23.04/vendor-data** - can be empty, see [cloud-init documentation](https://cloudinit.readthedocs.io/en/latest/) for more details.
 
