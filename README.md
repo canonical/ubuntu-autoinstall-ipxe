@@ -75,7 +75,7 @@ IPXE> chain http://boot.linuxgroove.com/ipxe
 
 This will then display the iPXE menu with each item defined your your ipxe file (at the root of this repo)
 
-Alternatively, you can configure a PXE server load your iPXE environment.
+Alternatively, you can configure a PXE server to load your iPXE environment.
 
 NOTES:
 
