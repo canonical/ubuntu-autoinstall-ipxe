@@ -1,40 +1,14 @@
 #cloud-config
 autoinstall:
-  apt:
-    disable_components: []
-    geoip: true
-    preserve_sources_list: false
-    primary:
-    - arches:
-      - amd64
-      - i386
-      uri: http://us.archive.ubuntu.com/ubuntu
-    - arches:
-      - default
-      uri: http://ports.ubuntu.com/ubuntu-ports
-  codecs:
-    install: false
-  drivers:
-    install: false
-  identity:
-    hostname: lunar-desktop
-    password: $6$5lpwCLsKLEzMkSJc$keOAhA6aO/5RocGThmhVA7LSNuW911Rx5HHXFEa75oGK20cEdAAgn14H5f5nGeq6QgcSyLPrWcg1.JvjXbhrN/
-    realname: Ubuntu user
-    username: ubuntu
-  kernel:
-    package: linux-generic-hwe-22.04
-  keyboard:
-    layout: us
-    toggle: null
-    variant: ''
-  locale: en_US.UTF-8
-  source:
-    id: ubuntu-desktop-minimal
-    search_drivers: false
-  ssh:
-    allow-pw: true
-    authorized-keys: []
-    install-server: false
-  timezone: America/New_York
-  updates: security
+  # version is an Autoinstall required field.
   version: 1
+  # Do not create a default user
+  user-data:
+    users: ['']
+  codecs:
+    install: true
+  drivers:
+    install: true
+  source:
+    id: ubuntu-desktop
+    search_drivers: true
